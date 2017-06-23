@@ -136,7 +136,7 @@ if [ "x$OSG_SINGULARITY_REEXEC" = "x" ]; then
         for VAR in "$@"; do
             # two seds to make sure we catch variations of the iwd,
             # including symlinked ones
-            VAR=`echo "$VAR" | sed -E "s;$PWD(.*);/srv\1;" | sed -E "s;.*/execute/dir_[0-9a-zA-Z]*(.*);/srv\1;"`
+            VAR=`echo " $VAR" | sed -E "s;$PWD(.*);/srv\1;" | sed -E "s;.*/execute/dir_[0-9a-zA-Z]*(.*);/srv\1;" | sed -E "s;^ ;;"`
             CMD+=("$VAR")
         done
 
